@@ -19,11 +19,11 @@ public class ArticleDetailActivity extends AppCompatActivity {
         TextView authorTextView = findViewById(R.id.detailAuthor);
         TextView contentTextView = findViewById(R.id.detailContent);
         ImageView imageView = findViewById(R.id.detailImage);
-
+        /*
         headlineTextView.setText(FakeDatabase.getArticleById(numReceived).getHeadline());
         authorTextView.setText(FakeDatabase.getArticleById(numReceived).getAuthor());
         contentTextView.setText(FakeDatabase.getArticleById(numReceived).getContent());
-        imageView.setImageResource(FakeDatabase.getArticleById(numReceived).getImageDrawableId());
+        imageView.setImageResource(FakeDatabase.getArticleById(numReceived).getImageDrawableId());*/
 
     }
 }

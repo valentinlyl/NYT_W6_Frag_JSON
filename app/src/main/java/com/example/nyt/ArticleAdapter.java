@@ -2,6 +2,8 @@ package com.example.nyt;
 
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
+
 import android.view.ViewGroup;
 import android.view.View;
 import android.view.LayoutInflater;
@@ -11,6 +13,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
+
+    private ArrayList<Article.article> articlesToAdapt;
+
+    public ArticleAdapter() {
+
+    }
+
+    public void setArticlesToAdapt(ArrayList<Article.article> articlesToAdapt) {
+        this.articlesToAdapt = articlesToAdapt;
+    }
+
+    public ArticleAdapter(ArrayList<Article.article> arrayList){
+        this.articlesToAdapt = arrayList;
+    }
+
+    public void setData(ArrayList articlesToAdapt){
+        this.articlesToAdapt = articlesToAdapt;
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public View view;
@@ -33,10 +53,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         }
     }
 
-    public ArrayList<Article> articleArrayList;
-    public ArticleAdapter(ArrayList<Article> arrayList) {
-        this.articleArrayList = arrayList;
-    }
+
     private boolean btnState = false;
     @Override
     public ArticleAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -47,13 +64,14 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(final ArticleAdapter.ViewHolder holder, int position) {
-        final Article article = this.articleArrayList.get(position);
-        holder.headline.setText(article.getHeadline());
-        holder.summary.setText(article.getSummary());
-        holder.photo.setImageResource(article.getImageDrawableId());
+        final Article.article article = this.articlesToAdapt.get(position);
+        holder.headline.setText(article.getTitle());
+        holder.summary.setText(article.get_abstract());
+
+        //holder.photo.setImageResource(article.getImageDrawableId());
 
 
-
+        /*
         holder.headline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,13 +118,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
 
                 btnState = !btnState;
             }
-        });
+        });*/
 
     }
 
     @Override
     public int getItemCount() {
-        return articleArrayList.size();
+        return articlesToAdapt.size();
     }
 }
 
